@@ -1,0 +1,23 @@
+# Local configuration, analysis output, and local sample checks.
+/gui_config.json
+/output/
+/tests/live_check.py
+/tests/tmp*/
+*.raw
+*.vmem
+*.dmp
+*.mem
+*.dd
+*.img
+*.bin
+
+# Python environments and generated files.
+/.gui-deps/
+/.venv/
+/venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# The extracted standalone distribution is already included in bin/vol2.
+/volatility_2.6_win64_standalone.zip

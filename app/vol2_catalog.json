@@ -1,0 +1,454 @@
+[
+  {
+    "name": "amcache",
+    "desc": "Print AmCache information"
+  },
+  {
+    "name": "apihooks",
+    "desc": "Detect API hooks in process and kernel memory"
+  },
+  {
+    "name": "atoms",
+    "desc": "Print session and window station atom tables"
+  },
+  {
+    "name": "atomscan",
+    "desc": "Pool scanner for atom tables"
+  },
+  {
+    "name": "auditpol",
+    "desc": "Prints out the Audit Policies from HKLM\\SECURITY\\Policy\\PolAdtEv"
+  },
+  {
+    "name": "bigpools",
+    "desc": "Dump the big page pools using BigPagePoolScanner"
+  },
+  {
+    "name": "bioskbd",
+    "desc": "Reads the keyboard buffer from Real Mode memory"
+  },
+  {
+    "name": "cachedump",
+    "desc": "Dumps cached domain hashes from memory"
+  },
+  {
+    "name": "callbacks",
+    "desc": "Print system-wide notification routines"
+  },
+  {
+    "name": "clipboard",
+    "desc": "Extract the contents of the windows clipboard"
+  },
+  {
+    "name": "cmdline",
+    "desc": "Display process command-line arguments"
+  },
+  {
+    "name": "cmdscan",
+    "desc": "Extract command history by scanning for _COMMAND_HISTORY"
+  },
+  {
+    "name": "connections",
+    "desc": "Print list of open connections [Windows XP and 2003 Only]"
+  },
+  {
+    "name": "connscan",
+    "desc": "Pool scanner for tcp connections"
+  },
+  {
+    "name": "consoles",
+    "desc": "Extract command history by scanning for _CONSOLE_INFORMATION"
+  },
+  {
+    "name": "crashinfo",
+    "desc": "Dump crash-dump information"
+  },
+  {
+    "name": "deskscan",
+    "desc": "Poolscaner for tagDESKTOP (desktops)"
+  },
+  {
+    "name": "devicetree",
+    "desc": "Show device tree"
+  },
+  {
+    "name": "dlldump",
+    "desc": "Dump DLLs from a process address space"
+  },
+  {
+    "name": "dlllist",
+    "desc": "Print list of loaded dlls for each process"
+  },
+  {
+    "name": "driverirp",
+    "desc": "Driver IRP hook detection"
+  },
+  {
+    "name": "drivermodule",
+    "desc": "Associate driver objects to kernel modules"
+  },
+  {
+    "name": "driverscan",
+    "desc": "Pool scanner for driver objects"
+  },
+  {
+    "name": "dumpcerts",
+    "desc": "Dump RSA private and public SSL keys"
+  },
+  {
+    "name": "dumpfiles",
+    "desc": "Extract memory mapped and cached files"
+  },
+  {
+    "name": "dumpregistry",
+    "desc": "Dumps registry files out to disk"
+  },
+  {
+    "name": "editbox",
+    "desc": "Displays information about Edit controls. (Listbox experimental.)"
+  },
+  {
+    "name": "envars",
+    "desc": "Display process environment variables"
+  },
+  {
+    "name": "eventhooks",
+    "desc": "Print details on windows event hooks"
+  },
+  {
+    "name": "evtlogs",
+    "desc": "Extract Windows Event Logs (XP/2003 only)"
+  },
+  {
+    "name": "filescan",
+    "desc": "Pool scanner for file objects"
+  },
+  {
+    "name": "gahti",
+    "desc": "Dump the USER handle type information"
+  },
+  {
+    "name": "gditimers",
+    "desc": "Print installed GDI timers and callbacks"
+  },
+  {
+    "name": "gdt",
+    "desc": "Display Global Descriptor Table"
+  },
+  {
+    "name": "getservicesids",
+    "desc": "Get the names of services in the Registry and return Calculated SID"
+  },
+  {
+    "name": "getsids",
+    "desc": "Print the SIDs owning each process"
+  },
+  {
+    "name": "handles",
+    "desc": "Print list of open handles for each process"
+  },
+  {
+    "name": "hashdump",
+    "desc": "Dumps passwords hashes (LM/NTLM) from memory"
+  },
+  {
+    "name": "hibinfo",
+    "desc": "Dump hibernation file information"
+  },
+  {
+    "name": "hivedump",
+    "desc": "Prints out a hive"
+  },
+  {
+    "name": "hivelist",
+    "desc": "Print list of registry hives."
+  },
+  {
+    "name": "hivescan",
+    "desc": "Pool scanner for registry hives"
+  },
+  {
+    "name": "hpakextract",
+    "desc": "Extract physical memory from an HPAK file"
+  },
+  {
+    "name": "hpakinfo",
+    "desc": "Info on an HPAK file"
+  },
+  {
+    "name": "idt",
+    "desc": "Display Interrupt Descriptor Table"
+  },
+  {
+    "name": "iehistory",
+    "desc": "Reconstruct Internet Explorer cache / history"
+  },
+  {
+    "name": "imagecopy",
+    "desc": "Copies a physical address space out as a raw DD image"
+  },
+  {
+    "name": "imageinfo",
+    "desc": "Identify information for the image"
+  },
+  {
+    "name": "impscan",
+    "desc": "Scan for calls to imported functions"
+  },
+  {
+    "name": "joblinks",
+    "desc": "Print process job link information"
+  },
+  {
+    "name": "kdbgscan",
+    "desc": "Search for and dump potential KDBG values"
+  },
+  {
+    "name": "kpcrscan",
+    "desc": "Search for and dump potential KPCR values"
+  },
+  {
+    "name": "ldrmodules",
+    "desc": "Detect unlinked DLLs"
+  },
+  {
+    "name": "lsadump",
+    "desc": "Dump (decrypted) LSA secrets from the registry"
+  },
+  {
+    "name": "machoinfo",
+    "desc": "Dump Mach-O file format information"
+  },
+  {
+    "name": "malfind",
+    "desc": "Find hidden and injected code"
+  },
+  {
+    "name": "mbrparser",
+    "desc": "Scans for and parses potential Master Boot Records (MBRs)"
+  },
+  {
+    "name": "memdump",
+    "desc": "Dump the addressable memory for a process"
+  },
+  {
+    "name": "memmap",
+    "desc": "Print the memory map"
+  },
+  {
+    "name": "messagehooks",
+    "desc": "List desktop and thread window message hooks"
+  },
+  {
+    "name": "mftparser",
+    "desc": "Scans for and parses potential MFT entries"
+  },
+  {
+    "name": "moddump",
+    "desc": "Dump a kernel driver to an executable file sample"
+  },
+  {
+    "name": "modscan",
+    "desc": "Pool scanner for kernel modules"
+  },
+  {
+    "name": "modules",
+    "desc": "Print list of loaded modules"
+  },
+  {
+    "name": "multiscan",
+    "desc": "Scan for various objects at once"
+  },
+  {
+    "name": "mutantscan",
+    "desc": "Pool scanner for mutex objects"
+  },
+  {
+    "name": "notepad",
+    "desc": "List currently displayed notepad text"
+  },
+  {
+    "name": "objtypescan",
+    "desc": "Scan for Windows object type objects"
+  },
+  {
+    "name": "patcher",
+    "desc": "Patches memory based on page scans"
+  },
+  {
+    "name": "poolpeek",
+    "desc": "Configurable pool scanner plugin"
+  },
+  {
+    "name": "printkey",
+    "desc": "Print a registry key, and its subkeys and values"
+  },
+  {
+    "name": "privs",
+    "desc": "Display process privileges"
+  },
+  {
+    "name": "procdump",
+    "desc": "Dump a process to an executable file sample"
+  },
+  {
+    "name": "pslist",
+    "desc": "Print all running processes by following the EPROCESS lists"
+  },
+  {
+    "name": "psscan",
+    "desc": "Pool scanner for process objects"
+  },
+  {
+    "name": "pstree",
+    "desc": "Print process list as a tree"
+  },
+  {
+    "name": "psxview",
+    "desc": "Find hidden processes with various process listings"
+  },
+  {
+    "name": "qemuinfo",
+    "desc": "Dump Qemu information"
+  },
+  {
+    "name": "raw2dmp",
+    "desc": "Converts a physical memory sample to a windbg crash dump"
+  },
+  {
+    "name": "screenshot",
+    "desc": "Save a pseudo-screenshot based on GDI windows"
+  },
+  {
+    "name": "servicediff",
+    "desc": "List Windows services (ala Plugx)"
+  },
+  {
+    "name": "sessions",
+    "desc": "List details on _MM_SESSION_SPACE (user logon sessions)"
+  },
+  {
+    "name": "shellbags",
+    "desc": "Prints ShellBags info"
+  },
+  {
+    "name": "shimcache",
+    "desc": "Parses the Application Compatibility Shim Cache registry key"
+  },
+  {
+    "name": "shutdowntime",
+    "desc": "Print ShutdownTime of machine from registry"
+  },
+  {
+    "name": "sockets",
+    "desc": "Print list of open sockets"
+  },
+  {
+    "name": "sockscan",
+    "desc": "Pool scanner for tcp socket objects"
+  },
+  {
+    "name": "ssdt",
+    "desc": "Display SSDT entries"
+  },
+  {
+    "name": "strings",
+    "desc": "Match physical offsets to virtual addresses (may take a while, VERY verbose)"
+  },
+  {
+    "name": "svcscan",
+    "desc": "Scan for Windows services"
+  },
+  {
+    "name": "symlinkscan",
+    "desc": "Pool scanner for symlink objects"
+  },
+  {
+    "name": "thrdscan",
+    "desc": "Pool scanner for thread objects"
+  },
+  {
+    "name": "threads",
+    "desc": "Investigate _ETHREAD and _KTHREADs"
+  },
+  {
+    "name": "timeliner",
+    "desc": "Creates a timeline from various artifacts in memory"
+  },
+  {
+    "name": "timers",
+    "desc": "Print kernel timers and associated module DPCs"
+  },
+  {
+    "name": "truecryptmaster",
+    "desc": "Recover TrueCrypt 7.1a Master Keys"
+  },
+  {
+    "name": "truecryptpassphrase",
+    "desc": "TrueCrypt Cached Passphrase Finder"
+  },
+  {
+    "name": "truecryptsummary",
+    "desc": "TrueCrypt Summary"
+  },
+  {
+    "name": "unloadedmodules",
+    "desc": "Print list of unloaded modules"
+  },
+  {
+    "name": "userassist",
+    "desc": "Print userassist registry keys and information"
+  },
+  {
+    "name": "userhandles",
+    "desc": "Dump the USER handle tables"
+  },
+  {
+    "name": "vaddump",
+    "desc": "Dumps out the vad sections to a file"
+  },
+  {
+    "name": "vadinfo",
+    "desc": "Dump the VAD info"
+  },
+  {
+    "name": "vadtree",
+    "desc": "Walk the VAD tree and display in tree format"
+  },
+  {
+    "name": "vadwalk",
+    "desc": "Walk the VAD tree"
+  },
+  {
+    "name": "vboxinfo",
+    "desc": "Dump virtualbox information"
+  },
+  {
+    "name": "verinfo",
+    "desc": "Prints out the version information from PE images"
+  },
+  {
+    "name": "vmwareinfo",
+    "desc": "Dump VMware VMSS/VMSN information"
+  },
+  {
+    "name": "volshell",
+    "desc": "Shell in the memory image"
+  },
+  {
+    "name": "windows",
+    "desc": "Print Desktop Windows (verbose details)"
+  },
+  {
+    "name": "wintree",
+    "desc": "Print Z-Order Desktop Windows Tree"
+  },
+  {
+    "name": "wndscan",
+    "desc": "Pool scanner for window stations"
+  },
+  {
+    "name": "yarascan",
+    "desc": "Scan process or kernel memory with Yara signatures"
+  }
+]

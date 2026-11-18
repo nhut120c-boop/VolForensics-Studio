@@ -1,0 +1,1820 @@
+[
+  {
+    "name": "windows.amcache.Amcache",
+    "class_name": "Amcache",
+    "desc": "Extract information on executed applications from the AmCache (deprecated).",
+    "deprecated": true,
+    "options": []
+  },
+  {
+    "name": "windows.bigpools.BigPools",
+    "class_name": "BigPools",
+    "desc": "List big page pools.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--tags",
+        "label": "Tags",
+        "type": "text",
+        "required": false,
+        "help": "Comma separated list of pool tags to filter pools returned",
+        "is_list": false
+      },
+      {
+        "name": "--show-free",
+        "label": "Show Free",
+        "type": "boolean",
+        "required": false,
+        "help": "Show freed regions (otherwise only show allocations in use)",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.cachedump.Cachedump",
+    "class_name": "Cachedump",
+    "desc": "Dumps lsa secrets from memory (deprecated)",
+    "deprecated": true,
+    "options": []
+  },
+  {
+    "name": "windows.callbacks.Callbacks",
+    "class_name": "Callbacks",
+    "desc": "Lists kernel callbacks and notification routines.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.cmdline.CmdLine",
+    "class_name": "CmdLine",
+    "desc": "Lists process command line arguments.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.cmdscan.CmdScan",
+    "class_name": "CmdScan",
+    "desc": "Looks for Windows Command History lists",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--no-registry",
+        "label": "No Registry",
+        "type": "boolean",
+        "required": false,
+        "help": "Don't search the registry for possible values of CommandHistorySize",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--max-history",
+        "label": "Max History",
+        "type": "text",
+        "required": false,
+        "help": "CommandHistorySize values to search for.",
+        "is_list": true,
+        "element_type": "int",
+        "placeholder": "50"
+      }
+    ]
+  },
+  {
+    "name": "windows.consoles.Consoles",
+    "class_name": "Consoles",
+    "desc": "Looks for Windows console buffers",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--no-registry",
+        "label": "No Registry",
+        "type": "boolean",
+        "required": false,
+        "help": "Don't search the registry for possible values of CommandHistorySize and HistoryBufferMax",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--max-history",
+        "label": "Max History",
+        "type": "text",
+        "required": false,
+        "help": "CommandHistorySize values to search for.",
+        "is_list": true,
+        "element_type": "int",
+        "placeholder": "50"
+      },
+      {
+        "name": "--max-buffers",
+        "label": "Max Buffers",
+        "type": "text",
+        "required": false,
+        "help": "HistoryBufferMax values to search for.",
+        "is_list": true,
+        "element_type": "int",
+        "placeholder": "4"
+      }
+    ]
+  },
+  {
+    "name": "windows.crashinfo.Crashinfo",
+    "class_name": "Crashinfo",
+    "desc": "Lists the information from a Windows crash dump.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.debugregisters.DebugRegisters",
+    "class_name": "DebugRegisters",
+    "desc": "windows.debugregisters.DebugRegisters",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.deskscan.DeskScan",
+    "class_name": "DeskScan",
+    "desc": "Scans for the Desktop instances of each Window Station",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.desktops.Desktops",
+    "class_name": "Desktops",
+    "desc": "Enumerates the Desktop instances of each Window Station",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.devicetree.DeviceTree",
+    "class_name": "DeviceTree",
+    "desc": "Listing tree based on drivers and attached devices in a particular windows memory image.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.direct_system_calls.DirectSystemCalls",
+    "class_name": "DirectSystemCalls",
+    "desc": "Detects the Direct System Call technique used to bypass EDRs (deprecated).",
+    "deprecated": true,
+    "options": [
+      {
+        "name": "--insensitive",
+        "label": "Insensitive",
+        "type": "boolean",
+        "required": false,
+        "help": "Makes the search case insensitive",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--wide",
+        "label": "Wide",
+        "type": "boolean",
+        "required": false,
+        "help": "Match wide (unicode) strings",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--yara-string",
+        "label": "Yara String",
+        "type": "text",
+        "required": false,
+        "help": "Yara rules (as a string)",
+        "is_list": false
+      },
+      {
+        "name": "--yara-file",
+        "label": "Yara File",
+        "type": "text",
+        "required": false,
+        "help": "Yara rules (as a file)",
+        "is_list": false
+      },
+      {
+        "name": "--yara-compiled-file",
+        "label": "Yara Compiled File",
+        "type": "text",
+        "required": false,
+        "help": "Yara compiled rules (as a file)",
+        "is_list": false
+      },
+      {
+        "name": "--max-size",
+        "label": "Max Size",
+        "type": "text",
+        "required": false,
+        "help": "Set the maximum size (default is 1GB)",
+        "is_list": false,
+        "placeholder": "1073741824"
+      }
+    ]
+  },
+  {
+    "name": "windows.dlllist.DllList",
+    "class_name": "DllList",
+    "desc": "Lists the loaded DLLs in a particular windows memory image.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--offset",
+        "label": "Offset",
+        "type": "text",
+        "required": false,
+        "help": "Process offset in the physical address space",
+        "is_list": false
+      },
+      {
+        "name": "--base",
+        "label": "Base",
+        "type": "text",
+        "required": false,
+        "help": "Specify a base virtual address in process memory",
+        "is_list": false
+      },
+      {
+        "name": "--name",
+        "label": "Name",
+        "type": "text",
+        "required": false,
+        "help": "Specify a regular expression to match dll name(s)",
+        "is_list": false
+      },
+      {
+        "name": "--ignore-case",
+        "label": "Ignore Case",
+        "type": "boolean",
+        "required": false,
+        "help": "Specify case insensitivity for the regular expression name matching",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--dump",
+        "label": "Dump",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract listed DLLs",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.driverirp.DriverIrp",
+    "class_name": "DriverIrp",
+    "desc": "List IRPs for drivers in a particular windows memory image.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.drivermodule.DriverModule",
+    "class_name": "DriverModule",
+    "desc": "Determines if any loaded drivers were hidden by a rootkit (deprecated).",
+    "deprecated": true,
+    "options": []
+  },
+  {
+    "name": "windows.driverscan.DriverScan",
+    "class_name": "DriverScan",
+    "desc": "Scans for drivers present in a particular windows memory image.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.dumpfiles.DumpFiles",
+    "class_name": "DumpFiles",
+    "desc": "Dumps cached file contents from Windows memory samples.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process ID to include (all other processes are excluded)",
+        "is_list": false
+      },
+      {
+        "name": "--virtaddr",
+        "label": "Virtaddr",
+        "type": "text",
+        "required": false,
+        "help": "Dump the _FILE_OBJECTs at the given virtual address(es)",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--physaddr",
+        "label": "Physaddr",
+        "type": "text",
+        "required": false,
+        "help": "Dump a single _FILE_OBJECTs at the given physical address(es)",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--filter",
+        "label": "Filter",
+        "type": "text",
+        "required": false,
+        "help": "Dump files matching regular expression FILTER",
+        "is_list": false
+      },
+      {
+        "name": "--ignore-case",
+        "label": "Ignore Case",
+        "type": "boolean",
+        "required": false,
+        "help": "Ignore case in filter match",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.envars.Envars",
+    "class_name": "Envars",
+    "desc": "Display process environment variables",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Filter on specific process IDs",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--silent",
+        "label": "Silent",
+        "type": "boolean",
+        "required": false,
+        "help": "Suppress common and non-persistent variables",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.etwpatch.EtwPatch",
+    "class_name": "EtwPatch",
+    "desc": "Identifies ETW (Event Tracing for Windows) patching techniques used by malware to evade detection. This plugin examines the first opcode of key ETW functions in ntdll.dll and advapi32.dll to detect common ETW bypass techniques such as return pointer manipulation (RET) or function redirection (JMP). Attackers often patch these functions to prevent security tools from receiving telemetry about process execution, API calls, and other system events.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Filter on specific process IDs",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.filescan.FileScan",
+    "class_name": "FileScan",
+    "desc": "Scans for file objects present in a particular windows memory image.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.getservicesids.GetServiceSIDs",
+    "class_name": "GetServiceSIDs",
+    "desc": "Lists process token sids.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.getsids.GetSIDs",
+    "class_name": "GetSIDs",
+    "desc": "Print the SIDs owning each process",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Filter on specific process IDs",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.handles.Handles",
+    "class_name": "Handles",
+    "desc": "Lists process open handles.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--offset",
+        "label": "Offset",
+        "type": "text",
+        "required": false,
+        "help": "Process offset in the physical address space",
+        "is_list": false
+      }
+    ]
+  },
+  {
+    "name": "windows.hashdump.Hashdump",
+    "class_name": "Hashdump",
+    "desc": "Dumps user hashes from memory (deprecated)",
+    "deprecated": true,
+    "options": []
+  },
+  {
+    "name": "windows.hollowprocesses.HollowProcesses",
+    "class_name": "HollowProcesses",
+    "desc": "Lists hollowed processes (deprecated)",
+    "deprecated": true,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.iat.IAT",
+    "class_name": "IAT",
+    "desc": "Extract Import Address Table to list API (functions) used by a program contained in external libraries",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process ID to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.indirect_system_calls.IndirectSystemCalls",
+    "class_name": "IndirectSystemCalls",
+    "desc": "Detects the Indirect System Call technique used to bypass EDRs (deprecated).",
+    "deprecated": true,
+    "options": [
+      {
+        "name": "--insensitive",
+        "label": "Insensitive",
+        "type": "boolean",
+        "required": false,
+        "help": "Makes the search case insensitive",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--wide",
+        "label": "Wide",
+        "type": "boolean",
+        "required": false,
+        "help": "Match wide (unicode) strings",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--yara-string",
+        "label": "Yara String",
+        "type": "text",
+        "required": false,
+        "help": "Yara rules (as a string)",
+        "is_list": false
+      },
+      {
+        "name": "--yara-file",
+        "label": "Yara File",
+        "type": "text",
+        "required": false,
+        "help": "Yara rules (as a file)",
+        "is_list": false
+      },
+      {
+        "name": "--yara-compiled-file",
+        "label": "Yara Compiled File",
+        "type": "text",
+        "required": false,
+        "help": "Yara compiled rules (as a file)",
+        "is_list": false
+      },
+      {
+        "name": "--max-size",
+        "label": "Max Size",
+        "type": "text",
+        "required": false,
+        "help": "Set the maximum size (default is 1GB)",
+        "is_list": false,
+        "placeholder": "1073741824"
+      }
+    ]
+  },
+  {
+    "name": "windows.info.Info",
+    "class_name": "Info",
+    "desc": "Show OS & kernel details of the memory sample being analyzed.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.joblinks.JobLinks",
+    "class_name": "JobLinks",
+    "desc": "Print process job link information",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--physical",
+        "label": "Physical",
+        "type": "boolean",
+        "required": false,
+        "help": "Display physical offset instead of virtual",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.kpcrs.KPCRs",
+    "class_name": "KPCRs",
+    "desc": "Print KPCR structure for each processor",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.ldrmodules.LdrModules",
+    "class_name": "LdrModules",
+    "desc": "Lists the loaded modules in a particular windows memory image.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.lsadump.Lsadump",
+    "class_name": "Lsadump",
+    "desc": "Dumps lsa secrets from memory (deprecated)",
+    "deprecated": true,
+    "options": []
+  },
+  {
+    "name": "windows.malfind.Malfind",
+    "class_name": "Malfind",
+    "desc": "Lists process memory ranges that potentially contain injected code (deprecated).",
+    "deprecated": true,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--dump",
+        "label": "Dump",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract injected VADs",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.malware.direct_system_calls.DirectSystemCalls",
+    "class_name": "DirectSystemCalls",
+    "desc": "Detects the Direct System Call technique used to bypass EDRs",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--insensitive",
+        "label": "Insensitive",
+        "type": "boolean",
+        "required": false,
+        "help": "Makes the search case insensitive",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--wide",
+        "label": "Wide",
+        "type": "boolean",
+        "required": false,
+        "help": "Match wide (unicode) strings",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--yara-string",
+        "label": "Yara String",
+        "type": "text",
+        "required": false,
+        "help": "Yara rules (as a string)",
+        "is_list": false
+      },
+      {
+        "name": "--yara-file",
+        "label": "Yara File",
+        "type": "text",
+        "required": false,
+        "help": "Yara rules (as a file)",
+        "is_list": false
+      },
+      {
+        "name": "--yara-compiled-file",
+        "label": "Yara Compiled File",
+        "type": "text",
+        "required": false,
+        "help": "Yara compiled rules (as a file)",
+        "is_list": false
+      },
+      {
+        "name": "--max-size",
+        "label": "Max Size",
+        "type": "text",
+        "required": false,
+        "help": "Set the maximum size (default is 1GB)",
+        "is_list": false,
+        "placeholder": "1073741824"
+      }
+    ]
+  },
+  {
+    "name": "windows.malware.drivermodule.DriverModule",
+    "class_name": "DriverModule",
+    "desc": "Determines if any loaded drivers were hidden by a rootkit",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.malware.hollowprocesses.HollowProcesses",
+    "class_name": "HollowProcesses",
+    "desc": "Lists hollowed processes",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.malware.indirect_system_calls.IndirectSystemCalls",
+    "class_name": "IndirectSystemCalls",
+    "desc": "Detects the Indirect System Call technique used to bypass EDRs.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--insensitive",
+        "label": "Insensitive",
+        "type": "boolean",
+        "required": false,
+        "help": "Makes the search case insensitive",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--wide",
+        "label": "Wide",
+        "type": "boolean",
+        "required": false,
+        "help": "Match wide (unicode) strings",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--yara-string",
+        "label": "Yara String",
+        "type": "text",
+        "required": false,
+        "help": "Yara rules (as a string)",
+        "is_list": false
+      },
+      {
+        "name": "--yara-file",
+        "label": "Yara File",
+        "type": "text",
+        "required": false,
+        "help": "Yara rules (as a file)",
+        "is_list": false
+      },
+      {
+        "name": "--yara-compiled-file",
+        "label": "Yara Compiled File",
+        "type": "text",
+        "required": false,
+        "help": "Yara compiled rules (as a file)",
+        "is_list": false
+      },
+      {
+        "name": "--max-size",
+        "label": "Max Size",
+        "type": "text",
+        "required": false,
+        "help": "Set the maximum size (default is 1GB)",
+        "is_list": false,
+        "placeholder": "1073741824"
+      }
+    ]
+  },
+  {
+    "name": "windows.malware.ldrmodules.LdrModules",
+    "class_name": "LdrModules",
+    "desc": "Lists the loaded modules in a particular windows memory image.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.malware.malfind.Malfind",
+    "class_name": "Malfind",
+    "desc": "Lists process memory ranges that potentially contain injected code.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--dump",
+        "label": "Dump",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract injected VADs",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.malware.pebmasquerade.PebMasquerade",
+    "class_name": "PebMasquerade",
+    "desc": "Detects potential process name spoofing by comparing EPROCESS and PEB data.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process ID to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.malware.processghosting.ProcessGhosting",
+    "class_name": "ProcessGhosting",
+    "desc": "Lists processes whose DeletePending bit is set or whose FILE_OBJECT is set to 0 or Vads that are DeleteOnClose",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.malware.psxview.PsXView",
+    "class_name": "PsXView",
+    "desc": "Lists all processes found via four of the methods described in \"The Art of Memory Forensics\" which may help identify processes that are trying to hide themselves. We recommend using -r pretty if you are looking at this plugin's output in a terminal.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--physical-offsets",
+        "label": "Physical Offsets",
+        "type": "boolean",
+        "required": false,
+        "help": "List processes with physical offsets instead of virtual offsets.",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.malware.skeleton_key_check.Skeleton_Key_Check",
+    "class_name": "Skeleton_Key_Check",
+    "desc": "Looks for signs of Skeleton Key malware",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.malware.suspicious_threads.SuspiciousThreads",
+    "class_name": "SuspiciousThreads",
+    "desc": "Lists suspicious userland process threads",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Filter on specific process IDs",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.malware.svcdiff.SvcDiff",
+    "class_name": "SvcDiff",
+    "desc": "Compares services found through list walking versus scanning to find rootkits",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.malware.unhooked_system_calls.UnhookedSystemCalls",
+    "class_name": "UnhookedSystemCalls",
+    "desc": "Detects hooked ntdll.dll stub functions in Windows processes.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.mbrscan.MBRScan",
+    "class_name": "MBRScan",
+    "desc": "Scans for and parses potential Master Boot Records (MBRs)",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--full",
+        "label": "Full",
+        "type": "boolean",
+        "required": false,
+        "help": "It analyzes and provides all the information in the partition entry and bootcode hexdump. (It returns a lot of information, so we recommend you render it in CSV.)",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.memmap.Memmap",
+    "class_name": "Memmap",
+    "desc": "Prints the memory map",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process ID to include (all other processes are excluded)",
+        "is_list": false
+      },
+      {
+        "name": "--dump",
+        "label": "Dump",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract listed memory segments",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.mftscan.ADS",
+    "class_name": "ADS",
+    "desc": "Scans for Alternate Data Stream",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.mftscan.MFTScan",
+    "class_name": "MFTScan",
+    "desc": "Scans for MFT FILE objects present in a particular windows memory image.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.mftscan.ResidentData",
+    "class_name": "ResidentData",
+    "desc": "Scans for MFT Records with Resident Data",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.modscan.ModScan",
+    "class_name": "ModScan",
+    "desc": "Scans for modules present in a particular windows memory image.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--dump",
+        "label": "Dump",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract listed modules",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--base",
+        "label": "Base",
+        "type": "text",
+        "required": false,
+        "help": "Extract a single module with BASE address",
+        "is_list": false
+      },
+      {
+        "name": "--name",
+        "label": "Name",
+        "type": "text",
+        "required": false,
+        "help": "module name/sub string",
+        "is_list": false
+      }
+    ]
+  },
+  {
+    "name": "windows.modules.Modules",
+    "class_name": "Modules",
+    "desc": "Lists the loaded kernel modules.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--dump",
+        "label": "Dump",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract listed modules",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--base",
+        "label": "Base",
+        "type": "text",
+        "required": false,
+        "help": "Extract a single module with BASE address",
+        "is_list": false
+      },
+      {
+        "name": "--name",
+        "label": "Name",
+        "type": "text",
+        "required": false,
+        "help": "module name/sub string",
+        "is_list": false
+      }
+    ]
+  },
+  {
+    "name": "windows.mutantscan.MutantScan",
+    "class_name": "MutantScan",
+    "desc": "Scans for mutexes present in a particular windows memory image.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.netscan.NetScan",
+    "class_name": "NetScan",
+    "desc": "Scans for network objects present in a particular windows memory image.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--include-corrupt",
+        "label": "Include Corrupt",
+        "type": "boolean",
+        "required": false,
+        "help": "Radically eases result validation. This will show partially overwritten data. WARNING: the results are likely to include garbage and/or corrupt data. Be cautious!",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.netstat.NetStat",
+    "class_name": "NetStat",
+    "desc": "Traverses network tracking structures present in a particular windows memory image.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--include-corrupt",
+        "label": "Include Corrupt",
+        "type": "boolean",
+        "required": false,
+        "help": "Radically eases result validation. This will show partially overwritten data. WARNING: the results are likely to include garbage and/or corrupt data. Be cautious!",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.orphan_kernel_threads.Threads",
+    "class_name": "Threads",
+    "desc": "Lists process threads",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.pe_symbols.PESymbols",
+    "class_name": "PESymbols",
+    "desc": "Prints symbols in PE files in process and kernel memory",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--source",
+        "label": "Source",
+        "type": "choice",
+        "required": true,
+        "help": "Where to resolve symbols.",
+        "is_list": false,
+        "choices": [
+          "kernel",
+          "processes"
+        ]
+      },
+      {
+        "name": "--module",
+        "label": "Module",
+        "type": "text",
+        "required": true,
+        "help": "Module in which to resolve symbols. Use \"ntoskrnl.exe\" to resolve in the base kernel executable.",
+        "is_list": false
+      },
+      {
+        "name": "--symbols",
+        "label": "Symbols",
+        "type": "text",
+        "required": false,
+        "help": "Symbol name to resolve",
+        "is_list": true,
+        "element_type": "str"
+      },
+      {
+        "name": "--addresses",
+        "label": "Addresses",
+        "type": "text",
+        "required": false,
+        "help": "Address of symbol to resolve",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.pedump.PEDump",
+    "class_name": "PEDump",
+    "desc": "Allows extracting PE Files from a specific address in a specific address space",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--base",
+        "label": "Base",
+        "type": "text",
+        "required": true,
+        "help": "Base address to reconstruct a PE file",
+        "is_list": false
+      },
+      {
+        "name": "--kernel-module",
+        "label": "Kernel Module",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract from kernel address space.",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.poolscanner.PoolScanner",
+    "class_name": "PoolScanner",
+    "desc": "A generic pool scanner plugin.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.privileges.Privs",
+    "class_name": "Privs",
+    "desc": "Lists process token privileges",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Filter on specific process IDs",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.processghosting.ProcessGhosting",
+    "class_name": "ProcessGhosting",
+    "desc": "Lists processes whose DeletePending bit is set or whose FILE_OBJECT is set to 0 or Vads that are DeleteOnClose (deprecated).",
+    "deprecated": true,
+    "options": []
+  },
+  {
+    "name": "windows.pslist.PsList",
+    "class_name": "PsList",
+    "desc": "Lists the processes present in a particular windows memory image.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--physical",
+        "label": "Physical",
+        "type": "boolean",
+        "required": false,
+        "help": "Display physical offsets instead of virtual",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process ID to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--dump",
+        "label": "Dump",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract listed processes",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.psscan.PsScan",
+    "class_name": "PsScan",
+    "desc": "Scans for processes present in a particular windows memory image.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process ID to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--dump",
+        "label": "Dump",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract listed processes",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--physical",
+        "label": "Physical",
+        "type": "boolean",
+        "required": false,
+        "help": "Display physical offset instead of virtual",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.pstree.PsTree",
+    "class_name": "PsTree",
+    "desc": "Plugin for listing processes in a tree based on their parent process ID.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--physical",
+        "label": "Physical",
+        "type": "boolean",
+        "required": false,
+        "help": "Display physical offsets instead of virtual",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process ID to include (with ancestors and descendants, all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.psxview.PsXView",
+    "class_name": "PsXView",
+    "desc": "Lists all processes found via four of the methods described in \"The Art of Memory Forensics\" which may help identify processes that are trying to hide themselves. We recommend using -r pretty if you are looking at this plugin's output in a terminal. deprecated.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--physical-offsets",
+        "label": "Physical Offsets",
+        "type": "boolean",
+        "required": false,
+        "help": "List processes with physical offsets instead of virtual offsets.",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.registry.amcache.Amcache",
+    "class_name": "Amcache",
+    "desc": "Extract information on executed applications from the AmCache.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.registry.cachedump.Cachedump",
+    "class_name": "Cachedump",
+    "desc": "Dumps lsa secrets from memory",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.registry.certificates.Certificates",
+    "class_name": "Certificates",
+    "desc": "Lists the certificates in the registry's Certificate Store.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--dump",
+        "label": "Dump",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract listed certificates",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.registry.getcellroutine.GetCellRoutine",
+    "class_name": "GetCellRoutine",
+    "desc": "Reports registry hives with a hooked GetCellRoutine handler",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.registry.hashdump.Hashdump",
+    "class_name": "Hashdump",
+    "desc": "Dumps user hashes from memory",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.registry.hivelist.HiveList",
+    "class_name": "HiveList",
+    "desc": "Lists the registry hives present in a particular memory image.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--filter",
+        "label": "Filter",
+        "type": "text",
+        "required": false,
+        "help": "String to filter hive names returned",
+        "is_list": false
+      },
+      {
+        "name": "--dump",
+        "label": "Dump",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract listed registry hives",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.registry.hivescan.HiveScan",
+    "class_name": "HiveScan",
+    "desc": "Scans for registry hives present in a particular windows memory image.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.registry.lsadump.Lsadump",
+    "class_name": "Lsadump",
+    "desc": "Dumps lsa secrets from memory",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.registry.printkey.PrintKey",
+    "class_name": "PrintKey",
+    "desc": "Lists the registry keys under a hive or specific key value.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--offset",
+        "label": "Offset",
+        "type": "text",
+        "required": false,
+        "help": "Hive Offset",
+        "is_list": false
+      },
+      {
+        "name": "--key",
+        "label": "Key",
+        "type": "text",
+        "required": false,
+        "help": "Key to start from",
+        "is_list": false
+      },
+      {
+        "name": "--recurse",
+        "label": "Recurse",
+        "type": "boolean",
+        "required": false,
+        "help": "Recurses through keys",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.registry.scheduled_tasks.ScheduledTasks",
+    "class_name": "ScheduledTasks",
+    "desc": "Decodes scheduled task information from the Windows registry, including information about triggers, actions, run times, and creation times.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.registry.userassist.UserAssist",
+    "class_name": "UserAssist",
+    "desc": "Print userassist registry keys and information.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--offset",
+        "label": "Offset",
+        "type": "text",
+        "required": false,
+        "help": "Hive Offset",
+        "is_list": false
+      }
+    ]
+  },
+  {
+    "name": "windows.scheduled_tasks.ScheduledTasks",
+    "class_name": "ScheduledTasks",
+    "desc": "Decodes scheduled task information from the Windows registry, including information about triggers, actions, run times, and creation times (deprecated).",
+    "deprecated": true,
+    "options": []
+  },
+  {
+    "name": "windows.sessions.Sessions",
+    "class_name": "Sessions",
+    "desc": "lists Processes with Session information extracted from Environmental Variables",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.shimcachemem.ShimcacheMem",
+    "class_name": "ShimcacheMem",
+    "desc": "Reads Shimcache entries from the ahcache.sys AVL tree",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.skeleton_key_check.Skeleton_Key_Check",
+    "class_name": "Skeleton_Key_Check",
+    "desc": "Looks for signs of Skeleton Key malware",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.ssdt.SSDT",
+    "class_name": "SSDT",
+    "desc": "Lists the system call table.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.statistics.Statistics",
+    "class_name": "Statistics",
+    "desc": "Lists statistics about the memory space.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.strings.Strings",
+    "class_name": "Strings",
+    "desc": "Reads output from the strings command and indicates which process(es) each string belongs to.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process ID to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--strings-file",
+        "label": "Strings File",
+        "type": "text",
+        "required": true,
+        "help": "Strings file",
+        "is_list": false
+      }
+    ]
+  },
+  {
+    "name": "windows.suspended_threads.SuspendedThreads",
+    "class_name": "SuspendedThreads",
+    "desc": "Enumerates suspended threads.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.suspicious_threads.SuspiciousThreads",
+    "class_name": "SuspiciousThreads",
+    "desc": "Lists suspicious userland process threads (deprecated).",
+    "deprecated": true,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Filter on specific process IDs",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.svcdiff.SvcDiff",
+    "class_name": "SvcDiff",
+    "desc": "Compares services found through list walking versus scanning to find rootkits (deprecated).",
+    "deprecated": true,
+    "options": []
+  },
+  {
+    "name": "windows.svclist.SvcList",
+    "class_name": "SvcList",
+    "desc": "Lists services contained with the services.exe doubly linked list of services",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.svcscan.SvcScan",
+    "class_name": "SvcScan",
+    "desc": "Scans for windows services.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.symlinkscan.SymlinkScan",
+    "class_name": "SymlinkScan",
+    "desc": "Scans for links present in a particular windows memory image.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.thrdscan.ThrdScan",
+    "class_name": "ThrdScan",
+    "desc": "Scans for windows threads.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.threads.Threads",
+    "class_name": "Threads",
+    "desc": "Lists process threads",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.timers.Timers",
+    "class_name": "Timers",
+    "desc": "Print kernel timers and associated module DPCs",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.truecrypt.Passphrase",
+    "class_name": "Passphrase",
+    "desc": "TrueCrypt Cached Passphrase Finder",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--min-length",
+        "label": "Min Length",
+        "type": "text",
+        "required": false,
+        "help": "Minimum length of passphrases to identify",
+        "is_list": false,
+        "placeholder": "5"
+      }
+    ]
+  },
+  {
+    "name": "windows.unhooked_system_calls.unhooked_system_calls",
+    "class_name": "unhooked_system_calls",
+    "desc": "Detects hooked ntdll.dll stub functions in Windows processes (deprecated).",
+    "deprecated": true,
+    "options": []
+  },
+  {
+    "name": "windows.unloadedmodules.UnloadedModules",
+    "class_name": "UnloadedModules",
+    "desc": "Lists the unloaded kernel modules.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.vadinfo.VadInfo",
+    "class_name": "VadInfo",
+    "desc": "Lists process memory ranges.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--address",
+        "label": "Address",
+        "type": "text",
+        "required": false,
+        "help": "Process virtual memory address to include (all other address ranges are excluded).",
+        "is_list": false
+      },
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Filter on specific process IDs",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--dump",
+        "label": "Dump",
+        "type": "boolean",
+        "required": false,
+        "help": "Extract listed memory ranges",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--maxsize",
+        "label": "Maxsize",
+        "type": "text",
+        "required": false,
+        "help": "Maximum size for dumped VAD sections (all the bigger sections will be ignored)",
+        "is_list": false,
+        "placeholder": "1073741824"
+      }
+    ]
+  },
+  {
+    "name": "windows.vadregexscan.VadRegExScan",
+    "class_name": "VadRegExScan",
+    "desc": "Scans all virtual memory areas for tasks using RegEx.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Filter on specific process IDs",
+        "is_list": true,
+        "element_type": "int"
+      },
+      {
+        "name": "--pattern",
+        "label": "Pattern",
+        "type": "text",
+        "required": true,
+        "help": "RegEx pattern",
+        "is_list": false
+      },
+      {
+        "name": "--maxsize",
+        "label": "Maxsize",
+        "type": "text",
+        "required": false,
+        "help": "Maximum size in bytes for displayed context",
+        "is_list": false,
+        "placeholder": "128"
+      }
+    ]
+  },
+  {
+    "name": "windows.vadwalk.VadWalk",
+    "class_name": "VadWalk",
+    "desc": "Walk the VAD tree.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.vadyarascan.VadYaraScan",
+    "class_name": "VadYaraScan",
+    "desc": "Scans all the Virtual Address Descriptor memory maps using yara.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--insensitive",
+        "label": "Insensitive",
+        "type": "boolean",
+        "required": false,
+        "help": "Makes the search case insensitive",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--wide",
+        "label": "Wide",
+        "type": "boolean",
+        "required": false,
+        "help": "Match wide (unicode) strings",
+        "is_list": false,
+        "default": false
+      },
+      {
+        "name": "--yara-string",
+        "label": "Yara String",
+        "type": "text",
+        "required": false,
+        "help": "Yara rules (as a string)",
+        "is_list": false
+      },
+      {
+        "name": "--yara-file",
+        "label": "Yara File",
+        "type": "text",
+        "required": false,
+        "help": "Yara rules (as a file)",
+        "is_list": false
+      },
+      {
+        "name": "--yara-compiled-file",
+        "label": "Yara Compiled File",
+        "type": "text",
+        "required": false,
+        "help": "Yara compiled rules (as a file)",
+        "is_list": false
+      },
+      {
+        "name": "--max-size",
+        "label": "Max Size",
+        "type": "text",
+        "required": false,
+        "help": "Set the maximum size (default is 1GB)",
+        "is_list": false,
+        "placeholder": "1073741824"
+      },
+      {
+        "name": "--pid",
+        "label": "Pid",
+        "type": "text",
+        "required": false,
+        "help": "Process IDs to include (all other processes are excluded)",
+        "is_list": true,
+        "element_type": "int"
+      }
+    ]
+  },
+  {
+    "name": "windows.verinfo.VerInfo",
+    "class_name": "VerInfo",
+    "desc": "Lists version information from PE files.",
+    "deprecated": false,
+    "options": [
+      {
+        "name": "--extensive",
+        "label": "Extensive",
+        "type": "boolean",
+        "required": false,
+        "help": "Search physical layer for version information",
+        "is_list": false,
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "windows.virtmap.VirtMap",
+    "class_name": "VirtMap",
+    "desc": "Lists virtual mapped sections.",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.windows.Windows",
+    "class_name": "Windows",
+    "desc": "Enumerates the Windows of Desktop instances",
+    "deprecated": false,
+    "options": []
+  },
+  {
+    "name": "windows.windowstations.WindowStations",
+    "class_name": "WindowStations",
+    "desc": "Scans for top level Windows Stations",
+    "deprecated": false,
+    "options": []
+  }
+]

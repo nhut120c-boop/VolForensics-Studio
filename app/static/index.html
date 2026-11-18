@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VolForensics Studio</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-title">
+        VolForensics Studio
+      </div>
+    </div>
+
+    <!-- Engine Selector -->
+    <div class="engine-toggle">
+      <button id="btn-engine-vol3" class="engine-btn active" title="Volatility 3">
+        <span id="vol3-status-dot" class="engine-status ready">Đang kiểm tra</span>
+        Volatility 3
+      </button>
+      <button id="btn-engine-vol2" class="engine-btn" title="Volatility 2">
+        <span id="vol2-status-dot" class="engine-status warning">Đang kiểm tra</span>
+        Volatility 2
+      </button>
+    </div>
+
+    <!-- Global Actions -->
+    <div class="header-actions">
+      <button id="btn-open-dumps-folder" class="btn btn-sm" title="Mở thư mục chứa các file đã trích xuất trong Windows Explorer">
+         Thư mục xuất
+      </button>
+      <button id="btn-open-settings" class="btn btn-sm" title="Cấu hình đường dẫn thực thi và thư mục lưu">
+         Cài đặt
+      </button>
+    </div>
+  </header>
+
+  <!-- Application Body Layout -->
+  <div class="app-body">
+
+    <!-- Left Sidebar: Source & Plugin Selection -->
+    <aside class="sidebar">
+      
+      <!-- Target Image Picker -->
+      <div class="sidebar-section">
+        <div class="section-label">
+          <span>Memory dump</span>
+          <span style="font-size: 10px; color: var(--text-muted);">.raw / .vmem / .dmp</span>
+        </div>
+        <div class="file-picker-box">
+          <input type="text" id="image-path-input" class="file-input" placeholder="Đường dẫn file">
+          <button id="btn-browse-image" class="btn btn-sm btn-primary"> Chọn file</button>
+        </div>
+        <div id="image-stats-badge" class="file-stats-badge" style="display: none;">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Cảnh báo khi người dùng chọn Volatility 2 mà chưa có Python 2 -->
+      <div id="vol2-warning-box" class="sidebar-section" style="display: none; background: rgba(255, 98, 98, 0.1); border-left: 3px solid var(--accent-amber);">
+        <div style="font-size: 12px; color: var(--accent-amber); font-weight: 600; margin-bottom: 4px;"> Volatility 2 chưa sẵn sàng</div>
+        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 8px;">
+          Kiểm tra đường dẫn Volatility 2 trong Cài đặt.
+        </div>
+        <button class="btn btn-sm btn-primary" onclick="setEngine('vol3')" style="width: 100%; justify-content: center;">
+           Dùng Volatility 3
+        </button>
+      </div>
+
+      <!-- Volatility 2 Profile Selector (Conditional) -->
+      <div id="profile-container" class="sidebar-section" style="display: none;">
+        <div class="section-label">
+          <span>Profile</span>
+        </div>
+        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+          <input type="text" id="profile-input" class="file-input" placeholder="Ví dụ: Win7SP1x64, Win10x64..." oninput="state.profile=this.value; updateCommandPreview();">
+        </div>
+        <div style="font-size: 10px; color: var(--text-muted); margin-top: 4px;">
+          Chạy <b>imageinfo</b> để tìm profile.
+        </div>
+      </div>
+
+      <!-- Triage Banner -->
+      <div class="sidebar-section" style="padding: 10px 14px;">
+        <div class="triage-banner">
+          <div class="triage-info">
+            <h4> Triage</h4>
+            <p>Info / PsTree / PsList / CmdLine / NetScan / Malfind</p>
+          </div>
+          <button id="btn-quick-triage" class="btn btn-sm btn-primary" title="Tự động hóa các bước phân tích cốt lõi">
+            Chạy Triage
+          </button>
+        </div>
+      </div>
+
+      <!-- Plugin Browser Section -->
+      <div class="sidebar-section" style="border-bottom: none; padding-bottom: 6px;">
+        <div class="section-label">
+          <span>Plugin</span>
+          <span id="plugin-count-badge" style="font-size: 10px; color: var(--text-muted);"></span>
+        </div>
+        
+        <!-- Category Pills -->
+        <div class="category-pills" id="category-pills" tabindex="0" aria-label="Danh mục plugin">
+          <!-- Populated by JS -->
+        </div>
+        <div class="category-scroll-actions">
+          <button id="btn-category-prev" class="btn btn-sm" type="button" aria-controls="category-pills" aria-label="Cuộn danh mục plugin về trước" disabled>Trước</button>
+          <button id="btn-category-next" class="btn btn-sm" type="button" aria-controls="category-pills" aria-label="Cuộn danh mục plugin về sau">Sau</button>
+        </div>
+
+        <!-- Search Box -->
+        <div class="search-box">
+          <input type="text" id="plugin-search-input" placeholder="Tìm plugin">
+        </div>
+      </div>
+
+      <!-- Scrollable Plugin List -->
+      <div class="plugin-list" id="plugin-list-container">
+        <!-- Populated by JS -->
+      </div>
+
+    </aside>
+
+    <!-- Main Workspace Area -->
+    <main class="content-area">
+
+      <!-- Plugin Configuration & Execution Bar -->
+      <section class="execution-bar">
+        <div class="selected-plugin-header">
+          <div class="plugin-full-name">
+            <span id="exec-plugin-name">windows.info</span>
+            <span id="exec-plugin-tag" class="category-tag tag-System">Hệ thống</span>
+          </div>
+          <div class="action-row">
+            <button id="btn-run-plugin" class="btn btn-success" onclick="executePlugin()" title="Chạy Plugin (Phím tắt: Ctrl+Enter)">
+               Chạy
+            </button>
+            <button id="btn-kill-plugin" class="btn btn-danger" onclick="killCurrentTask()" style="display: none;" title="Dừng tiến trình đang chạy">
+               Dừng
+            </button>
+          </div>
+        </div>
+
+        <p class="plugin-full-desc" id="exec-plugin-desc">
+          Nhận diện thông tin hệ điều hành: kiến trúc 32/64-bit, Kernel Base, DTB, Windows Build, Service Pack, múi giờ...
+        </p>
+
+        <!-- Dynamic Arguments Form -->
+        <div class="args-grid" id="plugin-dynamic-args">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Custom Extra CLI Arguments -->
+        <div style="margin-bottom: 12px;">
+          <div class="arg-label" style="margin-bottom: 4px;">Tham số bổ sung</div>
+          <input type="text" id="custom-cli-args" class="file-input" style="width: 100%;" placeholder="Ví dụ: -v">
+        </div>
+
+        <!-- Live Command Preview Bar -->
+        <div class="command-preview-box">
+          <span style="color: var(--text-muted); font-size: 11px; user-select: none;">Lệnh</span>
+          <span class="cmd-text" id="command-preview-text">vol.exe -f ... windows.info</span>
+          <button class="btn btn-sm" onclick="navigator.clipboard.writeText(document.getElementById('command-preview-text').textContent); alert('Đã sao chép câu lệnh!');">
+             Sao chép
+          </button>
+        </div>
+      </section>
+
+      <!-- Results Display Container -->
+      <section class="results-container">
+        
+        <!-- Tab Navigation -->
+        <div class="results-nav">
+          <div class="tabs-list">
+            <button class="tab-btn" data-tab="table">
+               Bảng dữ liệu
+              <span class="tab-badge" id="tab-badge-table">0</span>
+            </button>
+            <button class="tab-btn" data-tab="tree">
+               Cây tiến trình
+              <span class="tab-badge" id="tab-badge-tree">0</span>
+            </button>
+            <button class="tab-btn active" data-tab="terminal">
+               Log
+            </button>
+            <button class="tab-btn" data-tab="files">
+               Tệp trích xuất
+              <span class="tab-badge" id="tab-badge-files">0</span>
+            </button>
+            <button class="tab-btn" data-tab="history">
+               Lịch sử
+              <span class="tab-badge" id="tab-badge-history">0</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab Panes -->
+
+        <!-- 1. Table View Pane -->
+        <div class="tab-pane" id="tab-pane-table">
+          <div class="table-toolbar">
+            <input type="text" id="table-search-input" class="table-search" placeholder="Lọc bảng">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span id="table-row-count" style="font-size:11px; color:var(--text-muted); font-family:var(--font-mono);">0 dòng</span>
+              <button id="btn-export-csv" class="btn btn-sm"> Xuất CSV</button>
+              <button id="btn-export-json" class="btn btn-sm"> Xuất JSON</button>
+              <button id="btn-table-fullscreen" class="btn btn-sm" aria-pressed="false" title="Phóng bảng dữ liệu; nhấn Esc để thoát">Toàn màn hình</button>
+            </div>
+          </div>
+          <div class="table-wrapper" id="table-content-area">
+            <div style="padding:40px; text-align:center; color:var(--text-muted);">
+              Chưa có dữ liệu.
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Process Tree Pane -->
+        <div class="tab-pane" id="tab-pane-tree">
+          <div id="tree-content-area">
+            <div style="padding:40px; text-align:center; color:var(--text-muted);">
+              Chạy <b>pstree</b> để xem cây tiến trình.
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Terminal Live Logs Pane -->
+        <div class="tab-pane active" id="tab-pane-terminal">
+          <div style="background:var(--bg-primary); padding:6px 14px; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <button id="btn-copy-terminal" class="btn btn-sm"> Sao chép</button>
+              <button id="btn-clear-terminal" class="btn btn-sm">Xóa</button>
+              <button id="btn-toggle-analysis-fx" class="btn btn-sm" aria-pressed="true">Hiệu ứng: Bật</button>
+            </div>
+          </div>
+          <div class="analysis-visual" id="analysis-visual" hidden>
+            <div class="analysis-visual-caption">
+              <span>ĐANG PHÂN TÍCH <span id="analysis-fx-time">00:00</span></span>
+              <span>Hiệu ứng</span>
+            </div>
+            <canvas id="analysis-code-canvas" aria-hidden="true"></canvas>
+          </div>
+          <div class="terminal-pane" id="terminal-content">
+            <div style="color:var(--text-muted);">Chọn file và plugin để bắt đầu.</div>
+          </div>
+        </div>
+
+        <!-- 4. Extracted Files Pane -->
+        <div class="tab-pane" id="tab-pane-files">
+          <div id="files-content-area">
+            <div style="padding:40px; text-align:center; color:var(--text-muted);">
+              Chưa có tệp trích xuất.
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. History Pane -->
+        <div class="tab-pane" id="tab-pane-history">
+          <div id="history-content-area">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settings-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span> Cài đặt</span>
+        <button class="btn btn-sm" id="btn-close-settings">Đóng</button>
+      </div>
+      <div class="modal-body" style="display:flex; flex-direction:column; gap:12px;">
+        <div>
+          <label class="arg-label">Volatility 3</label>
+          <input type="text" id="cfg-vol3-cmd" class="file-input" style="width:100%;" value="vol.exe">
+          <div style="font-size:10px; color:var(--text-muted); margin-top:2px;">Nhập đường dẫn file thực thi vol.exe, không kèm tham số.</div>
+        </div>
+
+        <div>
+          <label class="arg-label">Python 2.7</label>
+          <input type="text" id="cfg-vol2-py" class="file-input" style="width:100%;" value="python2.exe" placeholder="Ví dụ: C:\Python27\python.exe">
+        </div>
+
+        <div>
+          <label class="arg-label">vol.py</label>
+          <input type="text" id="cfg-vol2-script" class="file-input" style="width:100%;">
+        </div>
+
+        <div>
+          <label class="arg-label">Volatility 2 standalone</label>
+          <input type="text" id="cfg-vol2-exe" class="file-input" style="width:100%;" placeholder="Ví dụ: C:\Tools\volatility_2.6_win64_standalone.exe">
+          <div style="font-size:10px; color:var(--text-muted); margin-top:2px;">Dùng bản standalone để không cần Python 2.</div>
+        </div>
+
+        <div>
+          <label class="arg-label">Thư mục xuất</label>
+          <input type="text" id="cfg-output-dir" class="file-input" style="width:100%;">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" onclick="closeSettingsModal()">Hủy</button>
+        <button class="btn btn-primary" id="btn-save-settings">Lưu</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/ui-effects.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
