@@ -290,10 +290,12 @@ class VolatilityRunner:
             cmd = [self.vol3_cmd, '-q', '-r', 'csv'] + image_args + ['-o', out_dir, plugin_name]
         elif engine == 'vol2':
             cmd = [self.vol2_custom_exe] if self.vol2_custom_exe else [self.vol2_python, self.vol2_script]
+            if plugin_name == 'screenshot':
+                cmd += ['--plugins', str(Path(__file__).with_name('vol2_plugins'))]
             cmd += ['-f', image_path]
             if profile and profile.strip():
                 cmd += ['--profile=' + profile.strip()]
-            cmd += [plugin_name]
+            cmd += ['guiscreenshot' if plugin_name == 'screenshot' else plugin_name]
         else:
             raise ValueError('Engine không hợp lệ.')
         for key, value in (options or {}).items():
@@ -384,7 +386,7 @@ class VolatilityRunner:
                     pending += decoder.decode(chunk, final=not chunk)
                     parts = sanitize_line(pending).split('\n')
                     pending = parts.pop()
-                    task['raw_logs'].extend(line for line in parts if line.strip())
+                    task['raw_logs'].extend(line for line in parts if line.strip() and not line.startswith('GUI_SCREENSHOT '))
                     if not chunk:
                         if pending.strip():
                             task['raw_logs'].append(pending)
@@ -400,6 +402,11 @@ class VolatilityRunner:
                 if proc.returncode == 0 and task['status'] != 'KILLED':
                     await asyncio.to_thread(self.finalize_memmap_json, task)
             raw = stdout.decode('utf-8', errors='replace')
+            if engine == 'vol2' and plugin_name == 'screenshot' and proc.returncode == 0 and task['status'] != 'KILLED':
+                from .screenshot_renderer import render_screenshots
+                images = await asyncio.to_thread(render_screenshots, raw)
+                task['raw_logs'].extend('Wrote ' + str(path) for path in images)
+                raw = '\n'.join('Wrote ' + str(path) for path in images)
             if not direct_json:
                 task['table_data'] = await asyncio.to_thread(parse_tabular_output, raw)
             if 'pstree' in plugin_name.lower():
